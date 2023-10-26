@@ -1,6 +1,6 @@
 import styles from "./Home.module.scss";
 import {Box, Button, Typography} from "@mui/material";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {Modals} from "../../components";
 
 
@@ -26,10 +26,17 @@ const Home = () => {
           <Button variant={"contained"} onClick={() => console.log("User is exit")}>
             Logout</Button> :
           (<>
-            <Button variant={"contained"} onClick={() => setShowModalType("login")}>
+            <Button variant={"contained"} onClick={() => {
+              setShowModalType("login")
+              console.log(showModalType)
+            }
+            }>
               Log In
             </Button>
-            <Button variant={"contained"} onClick={() => setShowModalType("register")}>
+            <Button variant={"contained"} onClick={
+              () => {setShowModalType("register")
+                console.log(showModalType)}
+            }>
               Register
             </Button>
           </>)
