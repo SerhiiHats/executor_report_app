@@ -1,15 +1,37 @@
-.container {
+.header {
+  background-color: rgba(63, 63, 63, 0.89);
+
+  width: 100%;
   display: flex;
-  flex-direction: column;
+  justify-content: right;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.87);
+
+  .container {
+    display: flex;
+    align-items: center;
+    height: 100px;
+    margin-right: 20px;
+
+    .userName {
+      margin-right: 20px;
+    }
+
+    .buttonsContainer {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+
+      .buttonEnter {
+        letter-spacing: 2px;
+      }
+    }
+  }
+}
+
+.main {
+  display: flex;
+  height: calc(100vh - 120px);
   justify-content: center;
   align-items: center;
-  height: 100vh;
-
-  .buttonsContainer {
-    display: flex;
-    justify-content: center;
-    gap: 16px;
-    margin-top: 40px;
-  }
 }
 

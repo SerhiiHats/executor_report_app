@@ -1,9 +1,12 @@
 import {Button, TextField, Typography} from "@mui/material";
 import styles from "./AuthForm.module.scss";
 import {useForm} from "react-hook-form";
+import {useDispatch} from "react-redux";
+import {loginRoute, registration} from "../../redux/slices/auth.js";
 
 // eslint-disable-next-line react/prop-types
 const AuthForm = ({formType, handleModalClose}) => {
+  const dispatch = useDispatch();
   const isRegisterFormType = formType === 'register';
   console.log("form type ", formType)
   const {
@@ -17,15 +20,26 @@ const AuthForm = ({formType, handleModalClose}) => {
       mode: 'onChange'
     }
   });
-  const onSubmit = data => {
-    console.log(data);
+  const onSubmit = async (values) => {
+    console.log(values);
+
+    const data = await dispatch(isRegisterFormType ? registration(values) : loginRoute(values));
+
+    if (!data.payload){
+      alert(`${isRegisterFormType ? 'Register' : 'Login'} failed`)
+    }
+
+    if('jwtToken' in data.payload){
+      window.localStorage.setItem('jwtToken', data.payload.jwtToken)
+    }
+
     handleModalClose()
   };
 
 
   return <>
     <Typography sx={{mb:"16px"}} variant={"h2"} className={styles.title}>
-      {isRegisterFormType ? 'Register' : 'Login'}
+      {isRegisterFormType ? 'Registration' : 'Sign in'}
     </Typography>
 
     <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
