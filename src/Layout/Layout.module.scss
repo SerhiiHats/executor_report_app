@@ -1,0 +1,86 @@
+@import "./src/index";
+
+$widthWrapNav: 250px;
+$heightAside: 115px;
+$heightHeader: 46px;
+
+.containerLayout {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+
+  .containerWrapNav {
+    box-sizing: border-box;
+    width: $widthWrapNav;
+    height: 100%;
+
+    .containerAside {
+      box-sizing: border-box;
+      background-color: $colorSecondary;
+      color: $colorPrimary;
+      height: $heightAside;
+      padding: 0;
+      margin: 0;
+
+      p {
+        margin: 0;
+        text-align: center;
+        padding: 10px 0 0 0;
+        font-weight: bold;
+        font-size: 17px;
+        color: $colorPrimaryPassive;
+
+        &:last-child {
+          text-align: left;
+          padding: 2px 0 0 10px;
+          font-size: 14px;
+        }
+      }
+
+      h1 {
+        text-align: center;
+        font-size: 20px;
+        padding: 0;
+      }
+
+    }
+
+    .containerNav {
+      box-sizing: border-box;
+      height: calc(100% - $heightAside);
+      background-color: $colorSecondary;
+      color: $colorPrimary;
+      overflow: auto;
+    }
+  }
+
+
+  .containerWrapMain {
+
+    width: calc(100% - $widthWrapNav);
+    background-color: $colorPrimary;
+    color: $colorFont;
+
+    .header {
+      box-sizing: border-box;
+      height: $heightHeader;
+      border-bottom: 2px solid $colorBorder;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 10px;
+
+      .test {
+        padding: 6px 14px;
+        border: 2px solid $colorBorder;
+        border-radius: 50%;
+      }
+    }
+
+    .main {
+      box-sizing: border-box;
+      height: calc(100vh - $heightHeader);
+      overflow: auto;
+    }
+  }
+}

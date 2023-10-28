@@ -1,0 +1,29 @@
+@import "./src/index";
+
+
+.container {
+  display: flex;
+  align-items: center;
+  height: 100px;
+  margin-right: 20px;
+
+  .userName {
+    margin-right: 20px;
+  }
+
+  .buttonsContainer {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+
+    .buttonEnter {
+      letter-spacing: 2px;
+    }
+
+    .test {
+      padding: 6px 14px;
+      border: 2px solid $colorBorder;
+      border-radius: 50%;
+    }
+  }
+}

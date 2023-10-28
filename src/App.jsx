@@ -1,10 +1,17 @@
-import {Home} from "./pages";
+import {Route, Routes} from "react-router";
+import Layout from "./Layout/Layout.jsx";
+import Home from "./pages/Home/Home.jsx";
 
 
 const App = () => {
   return (
     <>
-      <Home />
+      <Routes>
+        <Route path={"/"} element={<Layout/>}>
+          <Route index element={<Home/>}/>
+
+        </Route>
+      </Routes>
     </>
   );
 };
