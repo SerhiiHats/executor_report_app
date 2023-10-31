@@ -1,10 +1,14 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import axios from "../../axiosAPI"
+import {dataReducer} from "../../utils/utilDataReducer.js";
 
 
 const initialState = {
   userEmail: null,
-  status: 'loading'
+  status: 'loading',
+  reportF1: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  reportF2: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  reportResult: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 }
 
 export const registration = createAsyncThunk('auth-registration', async (param)=>{
@@ -31,6 +35,15 @@ const authSlice = createSlice({
     logout: (state) =>{
       state.userEmail = null;
       window.localStorage.removeItem('jwtToken');
+    },
+    setReportF1: (state, action) =>{
+      state.reportF1 = action.payload;
+    },
+    setReportF2: (state, action) =>{
+      state.reportF2 = action.payload;
+    },
+    setReportMonth: (state, action) =>{
+      state.reportResult = dataReducer.prepareFinalArray(action.payload[0], action.payload[1]);
     },
   },
 
@@ -77,4 +90,4 @@ const authSlice = createSlice({
 export const authReducer = authSlice.reducer;
 export const isAuthSelector = (state) => Boolean(state.auth.userEmail);
 
-export const {logout} = authSlice.actions
+export const {logout, setReportF1, setReportF2, setReportMonth} = authSlice.actions

@@ -1,0 +1,22 @@
+$color: #2d2d2d;
+
+.thead {
+  font-size: 14px;
+  border-collapse: collapse;
+
+  th {
+    border: 1px solid $color;
+  }
+
+  .quantity {
+    width: 68px;
+  }
+
+  .sum {
+    width: 99px;
+  }
+
+  .percent {
+    width: 40px;
+  }
+}
